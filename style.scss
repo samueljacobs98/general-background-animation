@@ -1,6 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap");
+
 body {
   background-color: #d2d1ff;
-  // background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Raleway", sans-serif;
+  color: #424242;
+
+  .panel {
+    background: linear-gradient(
+      315deg,
+      rgba(238, 174, 202, 0.3) 0%,
+      rgba(148, 187, 233, 0.7) 100%
+    );
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 16px 16px rgba(0, 0, 0, 0.2);
+  }
 
   canvas {
     position: absolute;
