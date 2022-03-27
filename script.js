@@ -30,8 +30,9 @@ class Circle {
 
   drawCircle() {
     context.save();
-    context.globalCompositeOperation = setGlobalCompositeOperation(4);
+    context.globalCompositeOperation = setGlobalCompositeOperation(5);
     context.translate(this.x, this.y);
+    context.beginPath();
     context.arc(0, 0, this.radius, 0, 2 * Math.PI);
     context.fillStyle = this.gradient;
     context.fill();
@@ -51,14 +52,14 @@ class Circle {
 
 const createCirclesArray = () => {
   const circlesArray = [];
-  const numberOfCircles = 10;
+  const numberOfCircles = 20;
 
   for (let i = 0; i < numberOfCircles; i++) {
     const x = Math.random() * width;
     const y = Math.random() * height;
-    const maxR = 300;
+    const maxR = 1000;
     const r = maxR - (Math.random() * maxR) / 2;
-    const maxSpeed = 5;
+    const maxSpeed = 0.5;
     circlesArray.push(new Circle(x, y, r, maxSpeed));
   }
   return circlesArray;

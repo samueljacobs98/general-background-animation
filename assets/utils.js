@@ -1,3 +1,5 @@
+import { globalCompositeOperationOptions, colorStopValues } from "./data.js";
+
 export const resizeCanvas = () => {
   let width = window.innerWidth;
   let height = window.innerHeight;
@@ -6,26 +8,21 @@ export const resizeCanvas = () => {
 };
 
 export const setGlobalCompositeOperation = (option) => {
-  const options = [
-    "source-over",
-    "destination-over",
-    "destination-atop",
-    "xor",
-    "darken",
-    "difference",
-    "hue",
-    "saturation",
-  ];
-
-  return options[option];
+  return globalCompositeOperationOptions[option];
 };
 
 export const initializeGrad = (radius, context) => {
   let gradient = context.createRadialGradient(0, 0, 0, 0, 0, radius);
-  gradient.addColorStop(0, "rgba(0, 0, 0, 0.0)");
-  gradient.addColorStop(0, `rgba(0, 0, 0, 0.8)`);
-  gradient.addColorStop(0, `rgba(43, 38, 255, 0.01)`);
-  gradient.addColorStop(1, `rgba(210, 209, 255, 1)`);
+
+  const colorStops = [];
+
+  colorStopValues.forEach((stop) => {
+    colorStops.push(`rgba(${stop.r}, ${stop.g}, ${stop.b}, ${stop.a})`);
+  });
+
+  colorStops.forEach((stop, index) => {
+    gradient.addColorStop(index / colorStops.length, stop);
+  });
   return gradient;
 };
 
