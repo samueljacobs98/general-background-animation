@@ -14,6 +14,17 @@ body .panel {
   border-radius: 10px;
   box-shadow: 0 16px 16px rgba(0, 0, 0, 0.2);
 }
+body .panel__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+body .panel__form-select, body .panel__form-increment {
+  background: transparent;
+  padding: 5px;
+  font-family: inherit;
+  border: 1px solid #242424;
+}
 body canvas {
   position: absolute;
   top: 0;

@@ -11,6 +11,51 @@
     <main class="panel">
       <h1>HTML Canvas Animation</h1>
       <!-- Inputs to add: number of circles, max radius, max speed,  -->
+      <form class="panel__form">
+        <label class="panel__form-label" for="global-composite-operation"
+          >Global Composite Operation</label
+        >
+        <select
+          class="panel__form-select"
+          name="lobal-composite-operation"
+          id="local-composite-operation"
+        >
+          <option value="0">source-over</option>
+          <option value="1">destination-over</option>
+          <option value="2">destination-atop</option>
+          <option value="3">xor</option>
+          <option value="4">darken</option>
+          <option value="5">difference</option>
+          <option value="6">hue</option>
+          <option value="7">saturation</option>
+        </select>
+        <label class="panel__form-label" for="noc">Number of Circles</label>
+        <input
+          class="panel__form-increment"
+          type="number"
+          id="noc"
+          name="noc"
+          value="20"
+        />
+        <label class="panel__form-label" for="maxR">Max Radius</label>
+        <input
+          class="panel__form-increment"
+          type="number"
+          id="maxR"
+          name="maxR"
+          value="1000"
+          step="10"
+        />
+        <label class="panel__form-label" for="maxSpeed">Max Speed</label>
+        <input
+          class="panel__form-increment"
+          type="number"
+          id="maxSpeed"
+          name="maxSpeed"
+          value="0.5"
+          step="0.1"
+        />
+      </form>
     </main>
     <canvas id="canvas"></canvas>
     <script src="./script.js" type="module"></script>

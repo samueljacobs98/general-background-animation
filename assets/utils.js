@@ -12,8 +12,7 @@ export const setGlobalCompositeOperation = (option) => {
 };
 
 export const initializeGrad = (radius, context) => {
-  let gradient = context.createRadialGradient(0, 0, 0, 0, 0, radius);
-
+  const gradient = context.createRadialGradient(0, 0, 0, 0, 0, radius);
   const colorStops = [];
 
   colorStopValues.forEach((stop) => {

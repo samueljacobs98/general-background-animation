@@ -18,6 +18,20 @@ body {
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 16px 16px rgba(0, 0, 0, 0.2);
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      &-select,
+      &-increment {
+        background: transparent;
+        padding: 5px;
+        font-family: inherit;
+        border: 1px solid rgb(36, 36, 36);
+      }
+    }
   }
 
   canvas {

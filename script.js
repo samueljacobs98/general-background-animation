@@ -5,6 +5,11 @@ import {
   getNumberInRange,
 } from "./assets/utils.js";
 
+const gcoSelect = document.getElementById("local-composite-operation");
+const numberOfCircles = document.getElementById("noc");
+const maxR = document.getElementById("maxR");
+const maxSpeed = document.getElementById("maxSpeed");
+
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
@@ -15,6 +20,13 @@ canvas.height = height;
 
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
+
+const properties = {
+  GCO: 0,
+  numberOfCircles: 20,
+  maxR: 1000,
+  maxSpeed: 0.5,
+};
 
 class Circle {
   constructor(x, y, radius, maxSpeed) {
@@ -30,7 +42,9 @@ class Circle {
 
   drawCircle() {
     context.save();
-    context.globalCompositeOperation = setGlobalCompositeOperation(5);
+    context.globalCompositeOperation = setGlobalCompositeOperation(
+      properties.GCO
+    );
     context.translate(this.x, this.y);
     context.beginPath();
     context.arc(0, 0, this.radius, 0, 2 * Math.PI);
@@ -52,20 +66,17 @@ class Circle {
 
 const createCirclesArray = () => {
   const circlesArray = [];
-  const numberOfCircles = 20;
+  const r = properties.maxR - (Math.random() * properties.maxR) / 2;
 
-  for (let i = 0; i < numberOfCircles; i++) {
+  for (let i = 0; i < properties.numberOfCircles; i++) {
     const x = Math.random() * width;
     const y = Math.random() * height;
-    const maxR = 1000;
-    const r = maxR - (Math.random() * maxR) / 2;
-    const maxSpeed = 0.5;
-    circlesArray.push(new Circle(x, y, r, maxSpeed));
+    circlesArray.push(new Circle(x, y, r, properties.maxSpeed));
   }
   return circlesArray;
 };
 
-const circlesArray = createCirclesArray();
+let circlesArray = createCirclesArray();
 
 const sketch = () => {
   circlesArray.forEach((circle) => {
@@ -82,3 +93,22 @@ const animate = () => {
 };
 
 animate();
+
+gcoSelect.addEventListener("change", (newGCO) => {
+  properties.GCO = newGCO.target.value;
+});
+
+numberOfCircles.addEventListener("change", (newNOC) => {
+  properties.numberOfCircles = newNOC.target.value;
+  circlesArray = createCirclesArray();
+});
+
+maxR.addEventListener("change", (newMaxR) => {
+  properties.maxR = newMaxR.target.value;
+  circlesArray = createCirclesArray();
+});
+
+maxSpeed.addEventListener("change", (newMaxSpeed) => {
+  properties.maxSpeed = newMaxSpeed.target.value;
+  circlesArray = createCirclesArray();
+});
