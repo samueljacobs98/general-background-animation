@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./style.css" type="text/css" />
   </head>
   <body>
+    <button class="show" id="show" type="button">Show Menu</button>
     <main class="panel">
       <h1>HTML Canvas Animation</h1>
       <form class="panel__form">
@@ -54,6 +55,25 @@
           value="0.5"
           step="0.1"
         />
+        <label class="panel__form-label" for="bg-colour"
+          >Background colour</label
+        >
+        <input
+          class="panel__form-colour"
+          type="color"
+          id="bg-colour"
+          name="bg-colour"
+          value="#d2d1ff"
+        />
+        <label class="panel__form-label" for="invert"
+          >Invert circle colours</label
+        >
+        <button class="panel__form-invert" type="button" id="invert">
+          Click to invert
+        </button>
+        <button class="panel__form-hide" id="hide" type="button">
+          Hide Menu
+        </button>
       </form>
     </main>
     <canvas id="canvas"></canvas>

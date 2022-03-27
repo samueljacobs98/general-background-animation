@@ -1,12 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap");
+:root {
+  --background-color: #d2d1ff;
+}
+
 body {
-  background-color: #d2d1ff;
+  background-color: var(--background-color);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   font-family: "Raleway", sans-serif;
   color: #424242;
+}
+body .show {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: transparent;
+  padding: 5px;
+  border: 1px solid #242424;
+  border-radius: 5px;
+}
+body .show:hover {
+  cursor: pointer;
 }
 body .panel {
   background: linear-gradient(315deg, rgba(238, 174, 202, 0.3) 0%, rgba(148, 187, 233, 0.7) 100%);
@@ -17,13 +37,27 @@ body .panel {
 body .panel__form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
 }
-body .panel__form-select, body .panel__form-increment {
+body .panel__form-select, body .panel__form-increment, body .panel__form-invert, body .panel__form-hide {
   background: transparent;
   padding: 5px;
   font-family: inherit;
   border: 1px solid #242424;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+body .panel__form-hide {
+  align-self: center;
+  margin-top: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+body .panel__form-hide:hover {
+  cursor: pointer;
+}
+body .panel__form-invert:hover {
+  cursor: pointer;
 }
 body canvas {
   position: absolute;

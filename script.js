@@ -9,6 +9,11 @@ const gcoSelect = document.getElementById("local-composite-operation");
 const numberOfCircles = document.getElementById("noc");
 const maxR = document.getElementById("maxR");
 const maxSpeed = document.getElementById("maxSpeed");
+const bgColour = document.getElementById("bg-colour");
+const invertBtn = document.getElementById("invert");
+const menu = document.querySelector(".panel");
+const hideBtn = document.getElementById("hide");
+const showBtn = document.getElementById("show");
 
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
@@ -26,6 +31,7 @@ const properties = {
   numberOfCircles: 20,
   maxR: 1000,
   maxSpeed: 0.5,
+  invert: false,
 };
 
 class Circle {
@@ -37,7 +43,7 @@ class Circle {
       x: getNumberInRange(-maxSpeed, maxSpeed),
       y: getNumberInRange(-maxSpeed, maxSpeed),
     };
-    this.gradient = initializeGrad(radius, context);
+    this.gradient = initializeGrad(radius, context, properties.invert);
   }
 
   drawCircle() {
@@ -111,4 +117,25 @@ maxR.addEventListener("change", (newMaxR) => {
 maxSpeed.addEventListener("change", (newMaxSpeed) => {
   properties.maxSpeed = newMaxSpeed.target.value;
   circlesArray = createCirclesArray();
+});
+
+bgColour.addEventListener("change", (inputColour) => {
+  const newColour = inputColour.target.value;
+  const root = document.querySelector(":root");
+  root.style.setProperty("--background-color", newColour);
+});
+
+invertBtn.addEventListener("click", () => {
+  properties.invert = !properties.invert;
+  circlesArray = createCirclesArray();
+});
+
+hideBtn.addEventListener("click", () => {
+  menu.style.setProperty("display", "none");
+  showBtn.style.setProperty("display", "block");
+});
+
+showBtn.addEventListener("click", () => {
+  menu.style.setProperty("display", "block");
+  showBtn.style.setProperty("display", "none");
 });
